@@ -9,17 +9,23 @@ public class BottleOfWater extends Product {
         this.volume = volume;
     }
 
+    // возвращает объём бутылки
     public int getVolume() {
         return volume;
     }
 
+    // устанавливает объём бутылки
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
 
+    // переопределение вывода продукта
     @Override
     public String toString() {
         return "Product{" +
                 "name='" + super.getName() + '\'' +
-                ", cost=" + super.getPrice() +
-                ", volume=" + volume +
+                ", cost=" + super.getPrice() +" rub"+
+                ", volume=" + volume + "L" +
                 '}';
     }
 

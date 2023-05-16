@@ -3,10 +3,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import Controllers.EmploeeController;
+import StudentDomen.Emploee;
 import StudentDomen.Student;
 import StudentDomen.StudentGroup;
 import StudentDomen.StudentSteam;
+import StudentDomen.Teacher;
+import StudentDomen.User;
+import StudentService.AverageAge;
 
+/*
+ * Главный класс приложения.
+ */
 public class App {
     /**
      * Метод main, запускающий приложение.
@@ -14,6 +22,38 @@ public class App {
      * @throws Exception возможные исключения.
      */
     public static void main(String[] args) throws Exception {
+
+        // Создание объекта сотрудника
+        Emploee peron1 = new Emploee("Олег", "Иванов", 55, "СПб", 110);
+
+        // Выплата зарплаты сотруднику
+        EmploeeController.paySalary(peron1);
+
+        // Вычисление среднего количества часов и средней ЗП
+        Integer studHour[] = { 124, 234, 231, 1, 45 };
+        System.out.printf("Среднее количество часов: %.2f\n", EmploeeController.mean(studHour));
+        Double emplSalary[] = { 12555.23, 34213.5, 10000.0 };
+        System.out.printf("Средняя ЗП: %.2f\n", EmploeeController.mean(emplSalary));
+
+        // Вычисление среднего возраста студентов, преподавателей и сотрудников
+        AverageAge<Student> averageAgeStudents = new AverageAge<>();
+        averageAgeStudents.add(new Student("Сергей", "Иванов ", 24, "Москва", 102));
+        averageAgeStudents.add(new Student("Андрей", "Сидоров ", 23, "Питербург", 101));
+        averageAgeStudents.add(new Student("Иван", "Петров ", 25, "Казань", 105));
+        System.out.println(averageAgeStudents);
+
+        AverageAge<Teacher> averageAgeTeachers = new AverageAge<>();
+        averageAgeTeachers.add(new Teacher("Аркадий", "Цветков ", 40, "Москва", 1012, "Кандидат наук"));
+        averageAgeTeachers.add(new Teacher("Максим", "Прохоров ", 44, "Москва", 1301, "Доктор наук"));
+        averageAgeTeachers.add(new Teacher("Юрий", "Гагарин ", 39, "Москва", 1005, "Кандидат наук"));
+        System.out.println(averageAgeTeachers);
+        
+        AverageAge<Emploee> averageAgeEmployees = new AverageAge<>();
+        averageAgeEmployees.add(new Emploee("Олег", "Игнатов ", 33, "Москва", 42));
+        averageAgeEmployees.add(new Emploee("Валерий", "Кипелов ", 36, "Москва", 51));
+        averageAgeEmployees.add(new Emploee("Екатерина", "Лесова ", 31, "Москва", 35));
+        System.out.println(averageAgeEmployees);
+
          /*
          * Создаем экземпляры класса Student
          */
